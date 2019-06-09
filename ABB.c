@@ -1,10 +1,16 @@
 #include "ABB.h"
 
-ARBOLBINARIO CrearNodo(TipoDato x){
+ARBOLBINARIO CrearNodoA(TipoDatoA x){
 	ARBOLBINARIO nuevo=(ARBOLBINARIO) malloc(sizeof(ELEMENTODEARBOLBINARIO));
 	nuevo->dato=x;
 	nuevo->der=nuevo->izq=NULL;
 	return nuevo;
+}
+
+void nuevoArbol(ARBOLBINARIO *raiz, ARBOLBINARIO ramaizq, ARBOLBINARIO ramader, TipoDatoA x){
+	*raiz=CrearNodoA(x);
+	(*raiz)->izq=ramaizq;
+	(*raiz)->der=ramader;
 }
 
 int profundidad(ARBOLBINARIO raiz){
@@ -41,9 +47,9 @@ void liberar(ARBOLBINARIO *raiz){
 	}
 }
 
-void insertarABB(ARBOLBINARIO *raiz, TipoDato x){
+void insertarABB(ARBOLBINARIO *raiz, TipoDatoA x){
 	if(!(*raiz)){
-		*raiz=CrearNodo(x);
+		*raiz=CrearNodoA(x);
 	}
 	else if(((*raiz)->dato)>x){
 		insertarABB(&((*raiz)->izq),x);
@@ -53,7 +59,7 @@ void insertarABB(ARBOLBINARIO *raiz, TipoDato x){
 	}
 }
 
-ARBOLBINARIO buscarABB(ARBOLBINARIO raiz, TipoDato x){
+ARBOLBINARIO buscarABB(ARBOLBINARIO raiz, TipoDatoA x){
 	if(raiz->dato==x){
 		return raiz;
 	}
@@ -68,7 +74,7 @@ ARBOLBINARIO buscarABB(ARBOLBINARIO raiz, TipoDato x){
 	}
 }
 
-void eliminarABB(ARBOLBINARIO *raiz, TipoDato x){
+void eliminarABB(ARBOLBINARIO *raiz, TipoDatoA x){
 	if(!(*raiz)){
 		printf("No se encontro el elemento\n");
 	}
@@ -111,7 +117,7 @@ void reemplazar(ARBOLBINARIO *actual){
 
 void copiarABB(ARBOLBINARIO A, ARBOLBINARIO *B){
 	if(A!=NULL){
-		*B=CrearNodo(A->dato);
+		*B=CrearNodoA(A->dato);
 		copiarABB(A->izq, (&(*B)->izq));
 		copiarABB(A->der, (&(*B)->der));
 	}
