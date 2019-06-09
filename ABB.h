@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef int TipoDato;
-typedef struct nodo{
-	TipoDato dato;
-	struct nodo *izq, *der;
+typedef int TipoDatoA;
+typedef struct nodoA{
+	TipoDatoA dato;
+	struct nodoA *izq, *der;
 }ELEMENTODEARBOLBINARIO;
 
 typedef ELEMENTODEARBOLBINARIO *ARBOLBINARIO;
 
-ARBOLBINARIO CrearNodo(TipoDato);
+ARBOLBINARIO CrearNodoA(TipoDatoA);
+void nuevoArbol(ARBOLBINARIO *, ARBOLBINARIO, ARBOLBINARIO, TipoDatoA);
 int profundidad(ARBOLBINARIO);
 void hojas(ARBOLBINARIO, int *);
 void liberar(ARBOLBINARIO *);
-void insertarABB(ARBOLBINARIO *, TipoDato);
-ARBOLBINARIO buscarABB(ARBOLBINARIO, TipoDato);
-void eliminarABB(ARBOLBINARIO *, TipoDato);
+void insertarABB(ARBOLBINARIO *, TipoDatoA);
+ARBOLBINARIO buscarABB(ARBOLBINARIO, TipoDatoA);
+void eliminarABB(ARBOLBINARIO *, TipoDatoA);
 void reemplazar(ARBOLBINARIO *);
 void copiarABB(ARBOLBINARIO, ARBOLBINARIO *);
